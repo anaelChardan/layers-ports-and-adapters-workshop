@@ -1,14 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-use Interop\Container\ContainerInterface;
-use Zend\Expressive\Application;
-
+use Meetup\Infrastructure\Common\MeetupApplicationContainer;
 require __DIR__ . '/../vendor/autoload.php';
 
-/** @var ContainerInterface $container */
-$container = require __DIR__ . '/../app/container.php';
+$container = new MeetupApplicationContainer(__DIR__ . '/../');
 
-/** @var Application $app */
-$app = $container[Application::class];
-$app->run();
+$container->getWebApplication()->run();
+
